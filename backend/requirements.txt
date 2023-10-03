@@ -1,0 +1,11 @@
+pymongo
+python-dotenv
+fastapi
+uvicorn
+pyjwt
+jose
+pydantic
+typing
+starlette
+httpx
+traceback2

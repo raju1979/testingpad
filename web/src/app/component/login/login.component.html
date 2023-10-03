@@ -1,0 +1,22 @@
+<div class="outer-component-container d-flex justify-content-center align-items-center w-100 h-100">
+    <div class="login-container">
+        <nz-card [nzBordered]="false" [nzTitle]="'Login'">
+          <form nz-form>
+            <nz-form-item>
+              <nz-form-control>
+                <input nz-input placeholder="Username" [(ngModel)]="username" name="username">
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control>
+                <input nz-input type="password" placeholder="Password" [(ngModel)]="password" name="password">
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <button nz-button nzType="primary" (click)="onSubmit()">Login</button>
+            </nz-form-item>
+          </form>
+        </nz-card>
+      </div>
+      
+</div>

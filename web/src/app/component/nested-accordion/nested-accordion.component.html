@@ -1,0 +1,37 @@
+<!-- <mat-accordion>
+    <mat-expansion-panel *ngFor="let item of accordionData">
+        <mat-expansion-panel-header>
+            {{ item.displayName}}
+        </mat-expansion-panel-header>
+        <div>
+            <p>Type: {{ item.type }}</p>
+            <p>Notes: {{ item.notes }}</p>
+        </div>
+        <ng-container *ngIf="item.children && item.children.length > 0">
+            <app-nested-accordion [accordionData]="item.children"></app-nested-accordion>
+        </ng-container>
+    </mat-expansion-panel>
+</mat-accordion> -->
+
+<nz-collapse>
+    <nz-collapse-panel *ngFor="let panel of accordionData" [nzHeader]="panel.displayName" [nzActive]="panel.active"
+        [nzExtra]="extraTpl">
+        <div>
+            <p>Type: {{ panel.type }}</p>
+            <ng-container *ngIf="panel.notes">
+                <nz-list nzBordered nzSize="small">
+                    <nz-list-header class="list-bg bg-danger">Notes</nz-list-header>
+                    <nz-list-item *ngFor="let item of panel.notes">{{item}}</nz-list-item>
+                </nz-list>
+            </ng-container>
+        </div>
+        <ng-container *ngIf="panel.childPanel && panel.childPanel.length > 0">
+            <app-nested-accordion [accordionData]="panel.childPanel"></app-nested-accordion>
+        </ng-container>
+        <ng-template #extraTpl>
+            <!-- You can use stopPropagation if you don't want the panel to toggle -->
+            <span nz-icon nzType="setting" (click)="$event.stopPropagation(); getSettings(panel)" class="p-1"></span>
+        </ng-template>
+    </nz-collapse-panel>
+</nz-collapse>
+

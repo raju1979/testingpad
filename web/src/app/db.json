@@ -1,0 +1,27 @@
+[
+    {
+        "id": "84e37af0-2141-4206-a58f-98e9737d50ac",
+        "name": "Object A",
+        "parentId": "root"
+    },
+    {
+        "id": "8183708a-f344-4af1-8222-4791d9b7cf5b",
+        "name": "Object C",
+        "parentId": "84e37af0-2141-4206-a58f-98e9737d50ac"
+    },
+    {
+        "id": "243b3a5c-f792-4f15-81b2-0dec341eac4f",
+        "name": "Object B",
+        "parentId": "root"
+    },
+    {
+        "id": "7d2a3778-fc7e-4eb1-8a32-57eafd23f4bc",
+        "name": "Object D",
+        "parentId": "84e37af0-2141-4206-a58f-98e9737d50ac"
+    },
+    {
+        "id": "55fbee28-75c1-444f-9d62-9f14026cc3ff",
+        "name": "Object E",
+        "parentId": "243b3a5c-f792-4f15-81b2-0dec341eac4f"
+    }
+]

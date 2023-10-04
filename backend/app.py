@@ -9,6 +9,8 @@ from dotenv import dotenv_values
 import os
 from fastapi.encoders import jsonable_encoder
 from typing import Any, Coroutine, List
+
+import pymongo
 from middlewares import CheckApiKey
 
 from models.book import Book, BookUpdate
@@ -16,6 +18,7 @@ from models.book import Book, BookUpdate
 from routes.book import router as book_router
 
 from routes.project import router as project_router
+from routes.user import router as user_router
 
 from starlette.middleware.base import BaseHTTPMiddleware
 
@@ -34,7 +37,8 @@ app = FastAPI()
 mongo_uri = os.getenv('MONGO_URI')
 mongo_client = MongoClient(mongo_uri)
 db = mongo_client['testingpad']
-collection = db['your_collection_name']  # Replace with your collection name
+user_collection = db['users']  # Replace with your collection name
+user_collection.create_index([("username", pymongo.ASCENDING)], unique=True)
 
 # Set the default encoding to datetime.datetime
 #mongo_client.codec_options.uuid_representation = 1  # Use standard UUID representation
@@ -90,7 +94,8 @@ def shutdown_db_client():
     app.mongodb_client.close()
 
 app.include_router(book_router, tags=["books"], prefix="/book")    
-app.include_router(project_router, tags=["projects"], prefix="/project")    
+app.include_router(project_router, tags=["projects"], prefix="/project")
+app.include_router(user_router, tags=["users"], prefix="/user")
 
 if __name__ == "__main__":
     import os
